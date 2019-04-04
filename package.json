@@ -1,7 +1,7 @@
 {
   "name": "react-infinity-carousel",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
