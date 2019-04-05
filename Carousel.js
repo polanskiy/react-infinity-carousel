@@ -10,6 +10,8 @@ class Carousel extends Component {
       sliding: false,
       offset: 0,
     };
+    this.setTimer = this.setTimer.bind(this);
+    this.clearTimer = this.clearTimer.bind(this);
     this.events = {
       onTouchStart: this.onDraggingStart.bind(this),
       onTouchMove: this.onDraggingMove.bind(this),
@@ -71,7 +73,7 @@ class Carousel extends Component {
 
     // check if we did a drag to fire onTranstionEnd
     if (Math.abs(Math.abs(dragging.x) - event.nativeEvent.changedTouches[0].pageX) > 5) {
-      this.setState({ dragging: null }, this.changeSlide(target));
+      this.setState({ dragging: null }, this.changeSlide.bind(this, target));
     }
   }
 
@@ -86,27 +88,16 @@ class Carousel extends Component {
     }
   }
 
-
-  goPrevSlide = (slide) => {
-    this.changeSlide(slide - 1);
-  }
-
-  goNextSlide = (slide) => {
-    this.changeSlide(slide + 1);
-  }
-
-  setTimer = () => {
+  setTimer() {
     const { autoPlayInterval, children } = this.props;
     const { slide } = this.state;
     if (Children.count(children) > 1 && autoPlayInterval > 0) {
       this.clearTimer();
-      this.timer = setInterval(() => {
-        this.changeSlide(slide + 1);
-      }, autoPlayInterval);
+      this.timer = window.setInterval(this.changeSlide.bind(this, this.state.slide + 1), interval);
     }
   }
 
-  clearTimer = () => {
+  clearTimer() {
     window.clearInterval(this.timer);
   }
 
@@ -126,6 +117,9 @@ class Carousel extends Component {
     const {
       slide, sliding, offset,
     } = this.state;
+    const goPrevSlide = this.changeSlide.bind(this, slide - 1);
+    const goNextSlide = this.changeSlide.bind(this, slide + 1);
+
     const slides = Children.map(children, child => React.cloneElement(child, { key: `${child.key}_clone` }));
     const count = Children.count(children);
     const enabled = count > 1;
@@ -177,8 +171,8 @@ class Carousel extends Component {
         )}
         {enabled && arrows && (
           <div>
-            <button type="button" className="prev" onClick={() => this.goPrevSlide(slide)} />
-            <button type="button" className="next" onClick={() => this.goNextSlide(slide)} />
+            <button type="button" className="prev" onClick={goPrevSlide} />
+            <button type="button" className="next" onClick={goNextSlide} />
           </div>
         )}
       </div>
