@@ -77,7 +77,7 @@ class Carousel extends Component {
     }
   }
 
-  changeSlide = (slide) => {
+  changeSlide(slide) {
     const { children } = this.props;
     if (document.hidden) return;
 
@@ -101,7 +101,7 @@ class Carousel extends Component {
     window.clearInterval(this.timer);
   }
 
-  onClick = (event) => {
+  onClick(event) {
     const { offset } = this.state;
     if (Math.abs(offset) < 25) return;
     event.preventDefault();
