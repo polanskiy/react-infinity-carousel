@@ -22,6 +22,15 @@ code {
   margin: 0 auto;
 }
 
+.carousel {
+	max-width: 100%;
+}
+
+.carousel ul li {
+	display: flex;
+	justify-content: center;
+}
+
 .carousel ul li img {
 	display: block;
 	max-width: 100%;
