@@ -16,7 +16,7 @@ class Carousel extends Component {
       onTouchEnd: this.onDraggingEnd.bind(this),
       onTouchCancel: this.onDraggingEnd.bind(this),
       onClick: this.onClick.bind(this),
-      onTransitionEnd: this.onTransitionEnd.bind(this),
+      onTransitionEnd: this.onTransitionEnd.bind(this)
     };
   }
 
@@ -29,7 +29,7 @@ class Carousel extends Component {
   }
 
 
-  onTransitionEnd = () => {
+  onTransitionEnd() {
     const { children } = this.props;
     let { slide } = this.state;
     const count = Children.count(children);
@@ -158,7 +158,7 @@ class Carousel extends Component {
             willChange: 'transform',
           }}
           {...this.events}
-          onTransitionEnd={this.onTransitionEnd}
+          // onTransitionEnd={this.onTransitionEnd}
         >
           {enabled
             && Children.map(slides.slice(-1).concat(children, slides.slice(0, 1)),
