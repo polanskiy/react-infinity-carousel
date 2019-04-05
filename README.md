@@ -2,9 +2,10 @@
 Infinity carousel for react apps
 
 ## Usage
+```
 import Carousel from 'react-infinity-carousel';
 
-```class App extends Component {
+class App extends Component {
   render() {
     return (
       <div className="App">
