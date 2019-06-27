@@ -1,16 +1,22 @@
 # react-infinity-carousel
 Infinity carousel for react apps
-
+## Installation
+```
+npm i react-infinity-carousel --save-dev
+```
 ## Usage
 ```
 import Carousel from 'react-infinity-carousel';
 
 class App extends Component {
   render() {
+    const options = {
+      autoPlayInterval: 1000
+    }
     return (
       <div className="App">
         <header className="App-header">
-          <Carousel>
+          <Carousel {...options}>
             <div style={{width: 200, height: 150, background: 'red'}}></div>
             <div style={{width: 200, height: 150, background: 'blue'}}></div>
             <div style={{width: 200, height: 150, background: 'green'}}></div>
@@ -21,3 +27,22 @@ class App extends Component {
   }
 }
 ```
+## Options
+```
+const options = {
+  autoPlayInterval: 1000, // default value: 3000
+  arrows: false, // default value: true
+  dots: false, // default value: true
+  transitionDuration: .9 // default value: .5
+  initialSlide: 2 // default value: 1
+  className: 'yourClassName' // default value: 'carousel'
+}
+```
+
+## Arrows
+
+Arrows have classNames: 'prev' and 'next'
+
+## Dots
+
+Dots have className: 'dots'

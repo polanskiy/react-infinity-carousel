@@ -93,7 +93,7 @@ class Carousel extends Component {
     const { slide } = this.state;
     if (Children.count(children) > 1 && autoPlayInterval > 0) {
       this.clearTimer();
-      this.timer = window.setInterval(this.changeSlide.bind(this, this.state.slide + 1), interval);
+      this.timer = window.setInterval(this.changeSlide.bind(this, this.state.slide + 1), autoPlayInterval);
     }
   }
 
@@ -146,7 +146,7 @@ class Carousel extends Component {
             display: 'flex',
             transitionProperty: sliding ? 'transform' : 'none',
             transform: enabled ? (offset !== 0 ? `translateX(calc(${offset * 1}px - ${slide * 100}%))` : `translateX(-${slide * 100}%)`) : null,
-            transitionDuration,
+            transitionDuration: transitionDuration+'s',
             transitionTimingFunction,
             contain: 'layout',
             willChange: 'transform',
@@ -161,7 +161,7 @@ class Carousel extends Component {
           }
         </ul>
         {enabled && dots && (
-          <ol>
+          <ol className="dots">
             {Children.map(children, (item, index) => (
               <li aria-current={slide === index + 1} onClick={() => this.changeSlide(index + 1)}>
                 {index + 1}
@@ -183,7 +183,7 @@ class Carousel extends Component {
 Carousel.propTypes = {
   className: PropTypes.string,
   autoPlayInterval: PropTypes.number,
-  transitionDuration: PropTypes.string,
+  transitionDuration: PropTypes.number,
   transitionTimingFunction: PropTypes.string,
   arrows: PropTypes.bool,
   dots: PropTypes.bool,
@@ -198,8 +198,8 @@ Carousel.defaultProps = {
   className: 'carousel',
   initialSlide: 1,
   transitionTimingFunction: 'ease-in-out',
-  transitionDuration: '.5s',
-  autoPlayInterval: '2s',
+  transitionDuration: .5,
+  autoPlayInterval: 3000,
   arrows: true,
   dots: true,
 };
