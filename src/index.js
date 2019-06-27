@@ -1,5 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
-import Carousel from './Carousel';
+import App from './App';
 
-export default Carousel;
 
+ReactDOM.render(
+    <App />
+  , document.getElementById('root'));
