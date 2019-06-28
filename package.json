@@ -1,8 +1,8 @@
 {
   "name": "react-infinity-carousel",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": false,
-  "license": "(ISC OR GPL-3.0)",
+  "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "repository": {

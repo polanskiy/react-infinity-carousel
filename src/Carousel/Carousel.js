@@ -1,5 +1,4 @@
 import React, { Component, Children } from 'react';
-import PropTypes from 'prop-types';
 
 class Carousel extends Component {
   constructor(props) {
@@ -179,20 +178,6 @@ class Carousel extends Component {
     );
   }
 }
-
-Carousel.propTypes = {
-  className: PropTypes.string,
-  autoPlayInterval: PropTypes.number,
-  transitionDuration: PropTypes.number,
-  transitionTimingFunction: PropTypes.string,
-  arrows: PropTypes.bool,
-  dots: PropTypes.bool,
-  initialSlide: PropTypes.number,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-};
 
 Carousel.defaultProps = {
   className: 'carousel',
